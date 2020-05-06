@@ -2,10 +2,11 @@
 
 # ADS-B to Cursor-on-target (CoT) converter
 # Copyright (c) 2020 by Alec Murphy, MIT licensed
+#   https://gitlab.com/almurphy/adsb2cot
 #
 # Reads air traffic data from an ADS-B receiver (like dump1090)
 #   and re-transmits it in real time to a CoT network (like TAK)
-# No special software or plugins required on the mobile terminals
+# No special software or plugins required on the mobile devices
 
 import logging
 import os
