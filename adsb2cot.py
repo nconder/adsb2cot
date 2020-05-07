@@ -22,6 +22,9 @@ ADSB_PORT = int(os.getenv('ADSB_PORT', '30003'))
 ATAK_HOST = os.getenv('ATAK_HOST', '239.2.3.1')
 ATAK_PORT = int(os.getenv('ATAK_PORT', '6969'))
 
+# Enable debug output
+DEBUG_LEVEL = int(os.getenv('DEBUG', '0'))
+
 # Validity period of CoT events, for setting "stale" attribute
 PLANE_EVT_TTL = 120  # seconds
 
@@ -108,7 +111,10 @@ if __name__ == '__main__':
 
     logger = logging.getLogger()
     logger.addHandler(logging.StreamHandler())
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
+
+    if DEBUG_LEVEL > 0:
+        logger.setLevel(logging.DEBUG)
 
     i_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
