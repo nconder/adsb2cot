@@ -18,6 +18,7 @@ adsb2cot has no configuration file nor command-line arguments; instead, its beha
 |ADSB_PORT|ADS-B server port|30003|
 |ATAK_HOST|CoT destination address|239.2.3.1|
 |ATAK_PORT|CoT destination port|6969|
+|DEBUG|Enable debugging output|0|
 
 ## references
 MIL-STD 2525C http://www.mapsymbs.com/ms2525c.pdf
