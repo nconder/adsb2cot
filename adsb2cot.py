@@ -178,7 +178,7 @@ if __name__ == '__main__':
             planes[hexID]['lat'] = adsbData[14]
             planes[hexID]['lon'] = adsbData[15]
             # Not always present
-            if int(adsbData[11]) > 0:
+            if len(adsbData[11]) > 0:
                 planes[hexID]['altitude'] = adsbData[11]
             # Send update to ATAK
             updateCoT = True
