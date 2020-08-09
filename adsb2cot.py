@@ -73,11 +73,16 @@ def plane2CoT(plane):
     point_attr = {
         'lat': plane['lat'],
         'lon': plane['lon'],
-        # UNIT CONVERT: altitude ft to meters
-        'hae': '%.2f' % (0.3048 * int(plane['altitude'])),
+        'hae': 0,  # ?? if unspecified, is zero a safe default ??
         'ce': '9999999.0',  # unspec
         'le': '9999999.0',  # unspec
     }
+
+    try:
+        # UNIT CONVERT: altitude ft to meters
+        point_attr['hae'] = '%.2f' % (0.3048 * int(plane['altitude']))
+    except KeyError:
+        pass
 
     # Mandatory schema, "event" element at top level, with
     #   sub-elements "point" and "detail"
@@ -93,7 +98,7 @@ def plane2CoT(plane):
             'speed': '%.4f' % (0.5144 * int(plane['ground_speed'])),
         }
         ET.SubElement(det, 'track', attrib=track_attr)
-    except KeyError:
+    except KeyError, ValueError:
         pass
 
     ET.SubElement(det, 'contact', attrib={'callsign': plane['callsign']})
